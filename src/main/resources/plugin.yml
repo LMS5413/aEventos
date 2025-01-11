@@ -2,7 +2,9 @@ name: aEventos
 version: ${project.version}
 description: O seu plugin de eventos!
 
-author: Ars3ne
+authors:
+    - Ars3ne
+    - LMS5413
 website: ${project.url}
 
 main: com.ars3ne.eventos.aEventos

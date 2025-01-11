@@ -53,7 +53,7 @@ public class UpdateChecker {
 
                 final JSONParser parser = new JSONParser();
 
-                URL url = new URL("https://api.github.com/repos/ars3ne/aEventos/releases");
+                URL url = new URL("https://api.github.com/repos/LMS5413/aEventos/releases");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
                 connection.setRequestMethod("GET");
