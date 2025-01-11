@@ -30,7 +30,7 @@ jobs:
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
           files: target/*.jar
-          tag_name: v${{ steps.get_version.outputs.version }}
+          tag_name: ${{ steps.get_version.outputs.version }}
           name: Release ${{ steps.get_version.outputs.version }}
           body: |
             ${{ github.event.head_commit.message }}
