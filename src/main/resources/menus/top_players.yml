@@ -1,0 +1,61 @@
+Menu:
+  Size: 45
+  Previous page slot: 39
+  Next page slot: 41
+  Empty page slot: 22
+  Item page limit: 21
+  Items:
+    Player:
+      Name: "&e@top_player"
+      Lore:
+        - "&7Posição: &f#@position"
+        - ""
+        - "&7Vitórias: &f@total_wins &7(&f#@wins_position&7)"
+        - "&7Participações: &f@total_participations &7(&f#@participations_position&7)"
+        - ""
+        - "&7Vitórias e Participações por evento:"
+
+Filter:
+  Default: "wins" # O filtro padrão. Lista de filtros: "wins", "victory", "participations".
+  Enabled: true # Os jogadores podem mudar o filtro? Se estiver como false, será usado o filtro definido no "Default."
+  Specific eventos: true # Os jogadores poderão filtrar por eventos específicos?
+  Names: # Nome do inventário para cada filtro.
+    Wins: "Top Vitórias:"
+    Participations: "TOP Participações:"
+
+Eventos:
+  Enabled: true # Mostrar as vitórias e participações de eventos específicos na lore?
+  Format: " &8- &7@evento_name: &f@evento_wins &7| &f@evento_participations"
+  New line: true # Adicionar uma nova linha na lore depois dos eventos?
+  Only with wins: true # Mostrar apenas os eventos que o jogador tem pelo menos uma vitória?
+  Empty: "  &8Nenhuma" # Caso a opḉão "Only with wins" esteja ativada, então essa mensagem será mostrada quando o jogador não tiver nenhuma vitória ou participação.
+  List:
+    # Lista de eventos que serão mostrados na lore. A ordem será a mesma dessa lista.
+    # Formato: nome_do_arquivo_de_configuração:Nome na lore.
+    # Os eventos em chat não contam participação.
+    # Os seguintes eventos não podem ser colocados, já que não contam nem vitórias ou participações: VOTACAO
+    - "parkour:Parkour"
+    - "campominado:Campo Minado"
+    - "spleef:Spleef"
+    - "corrida:Corrida"
+    - "semaforo:Semáforo"
+    - "batataquente:Batata Quente"
+    - "frog:Frog"
+    - "fight:Fight"
+    - "killer:Killer"
+    - "sumo:Sumô"
+    - "astronauta:Astronauta"
+    - "paintball:Paintball"
+    - "hunter:Hunter"
+    - "quiz:Quiz"
+    - "anvil:Anvil"
+    - "loteria:Loteria"
+    - "bolao:Bolão"
+    - "gladiador:Gladiador"
+    - "matematica:Matemática"
+    - "palavra:Palavra"
+    - "fastclick:FastClick"
+    - "nexus:Nexus"
+    - "thor:Thor"
+    - "sorteio:Sorteio"
+    - "battleroyale:Battle Royale"

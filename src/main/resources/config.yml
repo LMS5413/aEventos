@@ -1,0 +1,198 @@
+#
+#             ______               _
+#            |  ____|             | |
+#        __ _| |____   _____ _ __ | |_ ___  ___
+#       / _` |  __\ \ / / _ \ '_ \| __/ _ \/ __|
+#      | (_| | |___\ V /  __/ | | | || (_) \__ \
+#       \__,_|______\_/ \___|_| |_|\__\___/|___/
+#   Versão ${project.version} - Desenvolvido por Ars3ne
+#
+
+# Conexão MySQL. Caso esteja desativado, será usado SQLite.
+MySQL:
+  Enabled: false
+  Host: "localhost"
+  Username: "root"
+  Password: "pass"
+  Database: "aEventos"
+  Port: 3306
+
+# Lista de comandos permitidos nos eventos. Todos os outros serão bloqueados. Jogadores com a permissão "aEventos.admin" não são afetados.
+Allowed commands:
+  - "/g"
+  - "/l"
+  - "/tell"
+  - "/evento"
+
+# AutoStarter. Aqui você configurará quando o evento irá se iniciar automaticamente. O tempo de início é baseado no tempo do servidor.
+AutoStart:
+  Enabled: true
+  Times:
+    # Formato: (dia)-<nome do arquivo de configuração do evento>-<horário>
+    # O dia é opcional, porém o nome do arquivo de configuração e o horário são obrigatórios. O nome do dia deve estar em inglês ou em português.
+    # Caso o dia não esteja presente, o evento acontecerá todos os dias no horário especificado.
+
+    - "parkour-20:30"
+    - "sunday-campominado-18:00"
+
+Enable GUI: true # O plugin deve usar GUI?
+Show commands: true # Mostrar os comandos do plugin ao abrir o GUI?
+Save inventory: true # Se estiver ativado, ao invés de requerer que o usuário entre com o inventário vazio, o seu inventário será salvo em um arquivo e os seus itens serão apagados. Quando ele sair do evento, receberá os seus itens de volta.
+Spectator gamemode: false # Caso esteja ativado, os espectadores do evento serão colocados no game mode 3.
+
+Hook: "simpleclans" # Qual plugin de clã ou facção o plugin deve usar? Opções disponíveis: "simpleclans", "massivefactions" e "yclans"
+
+Bungeecord:
+  # Informações importantes:
+  # O modo Bungeecord está em fase experimental. Bugs podem e vão ocorrer.
+  # A configuração do evento deve existir em todos os servidores que o evento será inicializado.
+  # O servidor tem que possuir ao menos um jogador online para o evento ser inicializado. O plugin tentará iniciar novamente o evento depois do primeiro jogador entrar, mas não é garantido que irá funcionar.
+  # O número de jogadores no evento não é mostrado corretamente em todos os servidores. Recomendamos que você remova o número das mensagens dos eventos.
+  # Em casos raros, os comandos de vitória acabam sendo executados mais de uma vez. Portanto, certifique que você não está premiando itens, dinheiro ou algo do tipo.
+  Enabled: false # O suporte para Bungeecord deve ser ativado?
+  Default: "rankup" # O nome do servidor padrão.
+  Servers: ["rankup", "factions"] # Lista de servidores que o evento será iniciado simultaneamente.
+  Send to default: false # Quando o evento acabar, os jogadores devem ser mandados para o servidor padrão? Caso esteja desativado, o jogador será mandado de volta para o mesmo servidor que ele entrou no evento.
+  Commands on default: false # Os comandos de vitória devem ser executados no servidor padrão? Caso esteja desativado, os comandos serão executados no servidor que o jogador usou para entrar no evento.
+
+UpdateChecker: true # O plugin deve procurar por novas versões automaticamente?
+
+Formatter:
+  Type: "letter" # O tipo de formatação que o dinheiro deve ter. Tipos disponíveis: "decimal" e "letter".
+  Letters:
+    - ""
+    - "K"
+    - "M"
+    - "B"
+    - "T"
+    - "Q"
+    - "QQ"
+    - "S"
+    - "SS"
+    - "O"
+    - "N"
+    - "D"
+    - "UN"
+    - "DD"
+    - "TR"
+    - "QT"
+    - "QN"
+    - "SD"
+    - "SPD"
+    - "OD"
+    - "ND"
+    - "VG"
+    - "UVG"
+    - "DVG"
+    - "TVG"
+    - "QTV"
+
+Conversor:
+  # Aqui você pode converter as vitórias e participações de outros plugins para o aEventos.
+  # A database de usuários do aEventos deve estar vazia antes de rodar o conversor. Caso a database seja SQLite, copie o arquivo .db do plugin para essa pasta e o renomeie para "convert.db".
+  # Para o plugin HEventos, as participações e vitórias serão convertidas para um evento chamado "converted". Por padrão, ele não aparece na lore de vitórias.
+  Enabled: false # O conversor deve estar ativado? Lembre-se que caso a tabela do aEventos já possua usuários, o plugin não ligará.
+  Plugin: "yeventos" # O plugin que será convertido para o aEventos. Opções disponíveis: "heventos" e "yeventos."
+
+  # Conexão MySQL. Caso esteja desativado, será usada a database SQLite localizada no arquivo "convert.db"
+  MySQL:
+    Enabled: false
+    Host: "localhost"
+    Username: "root"
+    Password: "pass"
+    Database: "heventos"
+    Port: 3306
+
+  # Configurações para o conversor do yEventos. Aqui você colocará para qual arquivo de configuração as vitórias devem ser convertidas.
+  # Nesse exemplo, as vitórias do evento "Parkour" serão convertidas para o evento no arquivo de configuração "parkour".
+  yEventos:
+    parkour: "parkour"
+    corrida: "corrida"
+    fight: "fight"
+    sumo: "sumo"
+    labirinto: "labirinto" # O aEventos não possui um evento labirinto por padrão, mas você pode criar um copiando o arquivo de configuração "corrida.yml" e fazer as modificações desejadas. Essa é uma das vantagens do aEventos: você pode criar quantos eventos você quiser.
+    paintball: "paintball"
+    spleef: "spleef"
+    killer: "killer"
+    quiz: "quiz"
+    bolao: "bolao"
+    loteria: "loteria"
+    matematica: "matematica"
+    palavra: "palavra"
+    fastclick: "fastclick"
+
+Messages:
+  No event: "&3[Evento] &bNão está ocorrendo nenhum evento no momento!"
+  No spectator: "&3[Evento] &bNão é possível assistir esse evento."
+  Closed: "&3[Evento] &bO evento está fechado! Para assistir, digite &f/evento assistir"
+  Already joined: "&3[Evento] &bVocê já está no evento!"
+  Already spectator: "&3[Evento] &bVocê já está no modo espectador!"
+  Not joined: "&3[Evento] &bVocê não está participando desse evento!"
+  Empty inventory: "&3[Evento] &bVocê precisa estar com o inventário vazio para participar!"
+  Blocked command: "&3[Evento] &bVocê não pode usar esse comando durante o evento!"
+  Joined: "&3[Evento] &f@player &bentrou no evento!"
+  Leave: "&3[Evento] &f@player &bsaiu do evento!"
+  Died: "&3[Evento] &f@player &bmorreu! &f@players &bjogadores restantes."
+  Eliminated: "&3[Evento] &bVocê foi eliminado."
+  Disconnected: "&3[Evento] &f@player &bdesconectou! &f@players &bjogadores restantes."
+  Not allowed: "&3[Evento] &bVocê não tem permissão para participar desse evento."
+  No permission: "&3[Evento] &bVocê não tem permissão para fazer isso."
+  Console: "&3[Evento] &bApenas jogadores podem usar este comando."
+  Already happening: "&3[Evento] &bJá está acontecendo um evento no momento."
+  Invalid event: "&3[Evento] &bO evento fornecido é inválido."
+  Missing arguments: "&3[Evento] &bUso correto: &f/evento @args"
+  Reloaded: "&3[Evento] &bConfigurações recarregadas com sucesso!"
+  Unknown command: "&3[Evento] &bComando desconhecido. Digite &f/evento ajuda &bpara ver a lista de comandos."
+  Configuration already exists: "&3[Evento] &bEste arquivo de configuração já existe!"
+  Configuration created: "&3[Evento] &bArquivo de configuração &f@file &bcriado com sucesso!"
+  Saved: "&3[Evento] &bPosição &f@pos&bdefinida com sucesso!"
+  Saved kit: "&3[Evento] &bItens definidos com sucesso!"
+  Exit setup: "&3[Evento] &bVocê saiu das configurações do evento &f@name&b."
+  Not configurated: "&3[Evento] &bEste evento não está configurado. Utilize o comando &f/evento setup @name"
+  Error: "&3[Evento] &bOcorreu um erro ao salvar a posição."
+  Give axe: "&3[Evento] &bClique com o botão esquerdo para definir a pos1, e com o direito para definir a pos2."
+  Not needed: "&3[Evento] &bVocê não precisa do machado para definir posições nesse evento."
+  Not needed kit: "&3[Evento] &bVocê não precisa definir o kit desse evento."
+  Multiple kits: "&3[Evento] &bVocê deve configurar os kits desse evento usando os comandos &l/evento setup kit normal &be&l /evento setup kit last&b."
+  Not enough alternatives: "&3[Evento] &bO número mínimo de alternativas é maior que o número total de alternativas possíveis."
+  Unknown argument: "&3[Evento] &bArgumento inválido. Digite &f/evento setup&b para ver a lista de argumentos."
+  Missing dependency: "&3[Evento] &bEste evento não pode funcionar sem o plugin &f@dependency&b."
+  Require empty inventory: '&3[Evento] &bVocê precisa ativar a opção &f"Evento.Empty Inventory" &bnas configurações do evento para poder usar os itens setados.'
+  Offline: '&3[Evento] &bO jogador especificado está offline ou não existe.'
+  Player not joined: '&3[Evento] &bO jogador especificado não está no evento.'
+  Player kicked: '&3[Evento] &bJogador expulso com sucesso.'
+  Kicked: '&3[Evento] &bVocê foi expulso do evento.'
+
+  Default:
+    - "&3[Evento] &bLista de Comandos:"
+    - "&b/evento &f- Entrar no evento"
+    - "&b/evento assistir &f- Entrar no camarote"
+    - "&b/evento sair &f- Sair do evento"
+    - "&b/evento ajuda &f- Mostra a lista de comandos"
+
+  DefaultAdmin:
+    - "&3[Evento] &bLista de Comandos:"
+    - "&b/evento &f- Entrar no evento"
+    - "&b/evento assistir &f- Entrar no camarote do evento"
+    - "&b/evento sair &f- Sair do evento"
+    - "&b/evento ajuda &f- Mostra a lista de comandos"
+    - "&c/evento iniciar <evento> &4- Inicia um evento"
+    - "&c/evento parar &4- Cancela o evento atual"
+    - "&c/evento forcestart &4- Força o evento atual a iniciar antes das chamadas acabarem."
+    - "&c/evento kick <jogador> &4- Expulsa um jogador do evento."
+    - "&c/evento setup <evento> &4- Configura um evento"
+    - "&c/evento criarconfig <evento> &4- Crie um arquivo de configuração de exemplo."
+    - "&c/evento reload &4- Recarregue as configurações"
+  Setup:
+    - "&4[Evento] &cVocê está configurando o evento &f@name&c. Utilize os comandos abaixo:"
+    - "&c/evento setup entrada &4- Defina o local de entrada"
+    - "&c/evento setup espera &4- Defina o local de espera"
+    - "&c/evento setup saida &4- Defina o local de saida"
+    - "&c/evento setup camarote &4- Defina o local do camarote"
+    - "&c/evento setup pos &4- Obtenha um machado para definir as posições."
+    - "&c/evento setup pos1 &4- Defina a primeira posição."
+    - "&c/evento setup pos2 &4- Defina a segunda posição."
+    - "&c/evento setup pos3 &4- Defina a terceira posição."
+    - "&c/evento setup pos4 &4- Defina a quarta posição."
+    - "&c/evento setup kit &4- Defina os itens do evento."
+    - "&c/evento setup sair &4- Saia das configurações do evento &f@name&c."
