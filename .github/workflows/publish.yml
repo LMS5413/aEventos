@@ -27,7 +27,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: target/*.jar
-          token: ${{ secrets.JAVA_TOKEN }}
           tag_name: v${{ steps.get_version.outputs.version }}
           name: Release ${{ steps.get_version.outputs.version }}
           body: |
