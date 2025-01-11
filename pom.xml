@@ -6,8 +6,8 @@
 
     <groupId>com.ars3ne</groupId>
     <artifactId>aEventos</artifactId>
-    <url>https://github.com/ars3ne/aEventos</url>
-    <version>1.5.2</version>
+    <url>https://github.com/LMS5413/aEventos</url>
+    <version>1.5.3</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
